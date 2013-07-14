@@ -3,17 +3,27 @@ package supermarket;
 public class Till {
 
 	private final Basket basket;
-	private final Discounter discounter;
+	private final Multibuy multibuy;
+	private int multibuyDiscount;
+	private final MealDeal mealDeal;
+	private int mealDealDiscount;
 
-	public Till(Basket basket, Discounter discounter) {
+	public Till(Basket basket, Multibuy multibuy, MealDeal mealDeal) {
 		this.basket = basket;
-		this.discounter = discounter;
+		this.multibuy = multibuy;
+		this.mealDeal = mealDeal;
 
 	}
 
-	public int applyDiscount(String item) {
+	public void calculateDiscount(String item) {
 		basket.add(item);
-		return discounter.discount(item, basket.numberOf(item));
+		multibuyDiscount += multibuy.discount(item, basket.numberOf(item));
+		mealDealDiscount += mealDeal.discount(basket.items());
+	}
+
+	public int applyDiscount() {
+		return multibuyDiscount > mealDealDiscount ? multibuyDiscount
+				: mealDealDiscount;
 	}
 
 }
