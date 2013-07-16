@@ -7,7 +7,6 @@ import org.junit.Test;
 
 public class CheckoutTester {
 
-	@Ignore
 	@Test
 	public void emptyBasket() {
 		assertEquals(0, price(""));
@@ -18,7 +17,6 @@ public class CheckoutTester {
 		assertEquals(50, price("A"));
 	}
 
-	@Ignore
 	@Test
 	public void B() {
 		assertEquals(30, price("B"));
@@ -44,37 +42,31 @@ public class CheckoutTester {
 		assertEquals(130, price("A", "A", "A"));
 	}
 
-	@Ignore
 	@Test
 	public void AAAA() {
 		assertEquals(180, price("A", "A", "A", "A"));
 	}
 
-	@Ignore
 	@Test
 	public void AAAAAA() {
 		assertEquals(260, price("A", "A", "A", "A", "A", "A"));
 	}
 
-	@Ignore
 	@Test
 	public void BB() {
 		assertEquals(45, price("B", "B"));
 	}
 
-	@Ignore
 	@Test
 	public void ABABA() {
 		assertEquals(175, price("A", "B", "A", "B", "A"));
 	}
 
-	@Ignore
 	@Test
 	public void ABABABB() {
 		assertEquals(220, price("A", "B", "A", "B", "A", "B", "B"));
 	}
 
-	@Ignore
 	@Test
 	public void ACABDB() {
 		assertEquals(180, price("A", "C", "A", "B", "D", "B"));

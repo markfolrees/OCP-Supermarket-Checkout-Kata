@@ -1,23 +1,21 @@
 package second;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class SecondCheckout {
 
-	private final List<String> items = new ArrayList<String>();
-	private final SecondPriceList secondPriceList;
+	private final Calculator secondPriceList;
+	private final SecondBasket basket;
 
-	public SecondCheckout(SecondPriceList secondPriceList) {
+	public SecondCheckout(Calculator secondPriceList, SecondBasket basket) {
 		this.secondPriceList = secondPriceList;
+		this.basket = basket;
 	}
 
 	public void scan(String item) {
-		items.add(item);
+		basket.add(item);
 	}
 
 	public int total() {
-
-		return secondPriceList.calculate(items.toArray(new String[] {}));
+		return secondPriceList.calculate(basket);
 	}
+
 }
